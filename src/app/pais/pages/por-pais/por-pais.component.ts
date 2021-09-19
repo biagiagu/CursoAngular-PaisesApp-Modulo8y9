@@ -11,13 +11,20 @@ import { PaisService } from '../../services/pais.service';
 export class PorPaisComponent  {
 
 	termino :string = '';
+	hayError: boolean=false;
+
 
 	constructor( private paisService: PaisService) { }
 
 	buscar() {
-		console.log(this.termino);
+		this.hayError=false;
+		//console.log(this.termino);
 
-		this.paisService.buscarPais(this.termino).subscribe();
+		this.paisService.buscarPais(this.termino).subscribe(resp =>{
+			console.log(resp);
+		},(err)=>{
+			this.hayError=true
+		});
 
 	}
 }
