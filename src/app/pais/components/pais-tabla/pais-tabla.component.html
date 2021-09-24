@@ -2,20 +2,18 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Bandera</th>
-            <th>Nombre</th>
-            <th>Población</th>
+            <th>Dominio</th>
+            <th>Nombre Pais</th>
+            <th>Capital</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let pais of paises; let i = index">
             <th>{{i+1}}</th>
-            <th>
-                <img class="small-flag" [src]="pais.flag">
-            </th>
-            <th>{{ pais.capital }}, {{ pais.name }}</th>
-            <th>{{ pais.population | number}}</th>
+            <th>{{ pais.alpha3Code }}</th>
+            <th>{{ pais.name }}</th>
+            <th>{{ pais.capital }}</th>
             <th><a [routerLink]="[ '/pais', pais.alpha2Code ]">Ver Detalle</a></th>
         </tr>
         

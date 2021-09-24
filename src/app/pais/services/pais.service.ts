@@ -9,14 +9,16 @@ import { Country } from '../interfaces/pais.interface';
 })
 export class PaisService {
 
-	private apiURL:string='https://restcountries.eu/rest/v2';
+	private apiURL:string='http://api.countrylayer.com/v2';
+	private apiKey:string='?access_key=da057f36433124999061e11b7beee94a';
+	
 	
 	constructor(private http: HttpClient) { }
 
 	buscarPais( termino:string ): Observable <Country[]> {
 		
-		const url = `${this.apiURL}/name/${termino}`;
-
+		const url = `${this.apiURL}/name/${termino}${this.apiKey}`;
+		console.log(url);
 		return this.http.get<Country[]>( url );
 	}
 
